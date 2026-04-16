@@ -11,3 +11,6 @@ databaseChangeLog:
   - include:
       file: 04_seguridad.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 05_clientes_lealtad.yaml
+      relativeToChangelogFile: true
