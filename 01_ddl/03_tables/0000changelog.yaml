@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       file: 01_geografia_datos_referencia.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 02_aerolinea.yaml
+      relativeToChangelogFile: true
