@@ -1,1 +1,4 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - include:
+      file: 01_geografia_datos_referencia.yaml
+      relativeToChangelogFile: true
