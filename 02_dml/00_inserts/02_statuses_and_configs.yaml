@@ -27,13 +27,6 @@ databaseChangeLog:
               -- Validation Result
               INSERT INTO validation_result (result_code, result_name) VALUES ('APPROVED', 'Approved'), ('REJECTED', 'Rejected'), ('MANUAL_REVIEW', 'Manual Review');
       rollback:
-        - sql:
-            splitStatements: true
-            sql: |
-              DELETE FROM validation_result;
-              DELETE FROM assignment_source;
-              DELETE FROM ticket_status;
-              DELETE FROM check_in_status;
-              DELETE FROM reservation_status;
-              DELETE FROM payment_status;
-              DELETE FROM flight_status;
+        - sqlFile:
+            path: "../../../05_rollbacks/02_dml/00_inserts/02_statuses_and_configs.sql"
+            relativeToChangelogFile: true

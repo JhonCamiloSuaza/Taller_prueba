@@ -27,13 +27,6 @@ databaseChangeLog:
               -- Contact Type
               INSERT INTO contact_type (type_code, type_name) VALUES ('EMAIL', 'Email Address'), ('PHONE', 'Mobile Phone'), ('HOME_PHONE', 'Home Phone');
       rollback:
-        - sql:
-            splitStatements: true
-            sql: |
-              DELETE FROM contact_type;
-              DELETE FROM document_type;
-              DELETE FROM person_type;
-              DELETE FROM baggage_status;
-              DELETE FROM baggage_type;
-              DELETE FROM passenger_type;
-              DELETE FROM gender;
+        - sqlFile:
+            path: "../../../05_rollbacks/02_dml/00_inserts/01_master_basics.sql"
+            relativeToChangelogFile: true
