@@ -17,16 +17,16 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Johan2509
-      POSTGRES_DB: Flights
+      POSTGRES_PASSWORD: *****
+      POSTGRES_DB: Taller_Prueba
     ports:
-      - "5436:5432"
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   liquibase:
     image: liquibase/liquibase
-    container_name: liquibase-container
+    container_name: postgres-liquibase-taller_prueba
     depends_on:
       - postgres
     volumes:
@@ -34,9 +34,9 @@ services:
       - ./postgresql-42.7.9.jar:/liquibase/lib/postgresql.jar
     working_dir: /liquibase/changelog
     command: >
-      --url=jdbc:postgresql://postgres:5432/Flights
+      --url=jdbc:postgresql://postgres:5432/Taller_Prueba
       --username=postgres
-      --password=Johan2509
+      --password=camilo200804
       --driver=org.postgresql.Driver
       --changeLogFile=01_tables/00-changelog.yaml
       update
@@ -53,9 +53,9 @@ Configuración del contenedor de base de datos.
 
 * **Imagen:** `postgres:15`
 * **Contenedor:** `postgres-liquibase`
-* **Base de datos:** `Flights`
+* **Base de datos:** `Taller_Prueba`
 * **Usuario:** `postgres`
-* **Puerto externo:** `5436`
+* **Puerto externo:** `5435`
 * **Puerto interno:** `5432`
 
 ### 🔹 Variables de entorno
@@ -63,8 +63,8 @@ Configuración del contenedor de base de datos.
 | Variable          | Valor     |
 | ----------------- | --------- |
 | POSTGRES_USER     | postgres  |
-| POSTGRES_PASSWORD | Johan2509 |
-| POSTGRES_DB       | Flights   |
+| POSTGRES_PASSWORD | camilo200804 |
+| POSTGRES_DB       | Taller_Prueba   |
 
 ### 🔹 Volumen
 
@@ -77,7 +77,7 @@ Configuración del contenedor de base de datos.
 Herramienta encargada de ejecutar migraciones sobre la base de datos.
 
 * **Imagen:** `liquibase/liquibase`
-* **Contenedor:** `liquibase-container`
+* **Contenedor:** `postgres-liquibase-taller_prueba`
 * **Dependencia:** PostgreSQL
 
 ### 🔹 Volúmenes
@@ -89,9 +89,9 @@ Herramienta encargada de ejecutar migraciones sobre la base de datos.
 
 ### 🔹 Configuración de ejecución
 
-* **URL:** `jdbc:postgresql://postgres:5432/Flights`
+* **URL:** `jdbc:postgresql://postgres:5432/Taller_Prueba`
 * **Usuario:** `postgres`
-* **Password:** `Johan2509`
+* **Password:** `camilo200804`
 * **Driver:** `org.postgresql.Driver`
 * **Changelog:** `01_tables/00-changelog.yaml`
 
@@ -133,7 +133,7 @@ docker logs liquibase-container
 ## ⚠️ Consideraciones importantes
 
 * Liquibase usa el nombre del servicio `postgres` como host.
-* El puerto `5436` solo aplica para conexiones desde el host (tu PC).
+* El puerto `5435` solo aplica para conexiones desde el host (tu PC).
 * Asegúrate de que el archivo `00-changelog.yaml` exista en la ruta indicada.
 * El driver JDBC debe estar disponible en la ruta especificada.
 
