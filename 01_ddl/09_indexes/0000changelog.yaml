@@ -17,3 +17,6 @@ databaseChangeLog:
   - include:
       file: 07_aeronave.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 08_operaciones_vuelo.yaml
+      relativeToChangelogFile: true
