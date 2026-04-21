@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: "dominio-geografia-v1"
+      author: "HU-20dev"
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              -- 1. Gender
+              INSERT INTO gender (gender_code, gender_name) VALUES 
+              ('M', 'Male'), 
+              ('F', 'Female'), 
+              ('X', 'Non-Binary'), 
+              ('U', 'Unknown');
+
+              -- 2. Continent
+              INSERT INTO continent (continent_code, continent_name) VALUES 
+              ('AF', 'Africa'),
+              ('AN', 'Antarctica'),
+              ('AS', 'Asia'),
+              ('EU', 'Europe'),
+              ('NA', 'North America'),
+              ('OC', 'Oceania'),
+              ('SA', 'South America');
+
+              -- 3. Currency
+              INSERT INTO currency (iso_currency_code, currency_name, currency_symbol, minor_units) VALUES 
+              ('USD', 'US Dollar', '$', 2),
+              ('EUR', 'Euro', '€', 2),
+              ('COP', 'Colombian Peso', '$', 0),
+              ('GBP', 'British Pound', '£', 2),
+              ('JPY', 'Japanese Yen', '¥', 0);
+
+              -- 4. Person Type
+              INSERT INTO person_type (type_code, type_name) VALUES 
+              ('PAX', 'Passenger'), 
+              ('EMP', 'Employee'), 
+              ('CREW', 'Crew Member');
+
+              -- 5. Document Type
+              INSERT INTO document_type (type_code, type_name) VALUES 
+              ('PASSPORT', 'Passport'), 
+              ('ID', 'National ID Card'), 
+              ('VISA', 'Visa');
+
+              -- 6. Contact Type
+              INSERT INTO contact_type (type_code, type_name) VALUES 
+              ('EMAIL', 'Email Address'), 
+              ('PHONE', 'Mobile Phone'), 
+              ('HOME', 'Home Phone');
+
+              -- 7. Passenger Type
+              INSERT INTO passenger_type (type_code, type_name) VALUES 
+              ('ADULT', 'Adult'), 
+              ('CHILD', 'Child'), 
+              ('INFANT', 'Infant');
+
+              -- 8. Baggage Type
+              INSERT INTO baggage_type (type_code, type_name) VALUES 
+              ('CARRY_ON', 'Carry On'), 
+              ('CHECKED', 'Checked Bag'), 
+              ('SPECIAL', 'Special Items');
+
+              -- 9. Baggage Status
+              INSERT INTO baggage_status (status_code, status_name) VALUES 
+              ('REGISTERED', 'Registered'), 
+              ('LOADED', 'Loaded'), 
+              ('CLAIMED', 'Claimed'), 
+              ('LOST', 'Lost/Delayed');
+      rollback:
+        - sqlFile:
+            path: "../../../05_rollbacks/02_dml/00_inserts/01_dominio_geografia_y_referencia.sql"
+            relativeToChangelogFile: true
