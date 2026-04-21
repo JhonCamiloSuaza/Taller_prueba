@@ -1,6 +1,6 @@
 databaseChangeLog:
   - include:
-      file: 01_master_basics.yaml
+      file: 01_dominio_geografia_y_referencia.yaml
       relativeToChangelogFile: true
   - include:
       file: 02_statuses_and_configs.yaml
