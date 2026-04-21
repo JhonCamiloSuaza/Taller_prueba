@@ -7,4 +7,8 @@ databaseChangeLog:
       relativeToChangelogFile: true
   - include:
       file: 03_dml_identidad.yaml
-      relativeToChangelogFile: true
+      relativeToChangelogFile: true
+  - include:
+      file: 04_dml_seguridad.yaml
+      relativeToChangelogFile: true
+
