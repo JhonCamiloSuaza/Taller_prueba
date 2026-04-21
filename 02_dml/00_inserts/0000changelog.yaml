@@ -23,4 +23,7 @@ databaseChangeLog:
   - include:
       file: 08_dml_operaciones_vuelo.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 09_dml_ventas_reservas.yaml
+      relativeToChangelogFile: true
 
