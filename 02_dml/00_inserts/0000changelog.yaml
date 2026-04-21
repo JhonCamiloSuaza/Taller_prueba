@@ -3,6 +3,9 @@ databaseChangeLog:
       file: 01_dominio_geografia_y_referencia.yaml
       relativeToChangelogFile: true
   - include:
+      file: 02_dominio_aerolinea.yaml
+      relativeToChangelogFile: true
+  - include:
       file: 02_statuses_and_configs.yaml
       relativeToChangelogFile: true
   - include:
