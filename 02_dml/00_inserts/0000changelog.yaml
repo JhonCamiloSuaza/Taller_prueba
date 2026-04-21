@@ -17,4 +17,7 @@ databaseChangeLog:
   - include:
       file: 06_dml_aeropuerto.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 07_dml_aeronave.yaml
+      relativeToChangelogFile: true
 
