@@ -1,12 +1,12 @@
 databaseChangeLog:
   - changeSet:
       id: "dominio-geografia-completo-v1"
-      author: "HU-20dev"
+      author: "HU-21dev"
       changes:
         - sql:
             splitStatements: true
             sql: |
-              -- 1. Time Zones (Necesarias para ciudades)
+              -- 1. Time Zones
               INSERT INTO time_zone (time_zone_id, time_zone_name, utc_offset_minutes) VALUES 
               ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'UTC-05:00', -300),
               ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12', 'UTC+01:00', 60),
@@ -38,11 +38,9 @@ databaseChangeLog:
 
               -- 6. Currency
               INSERT INTO currency (iso_currency_code, currency_name, currency_symbol, minor_units) VALUES 
-              ('USD', 'US Dollar', '$', 2),
-              ('EUR', 'Euro', '€', 2),
-              ('COP', 'Colombian Peso', '$', 0);
+              ('USD', 'US Dollar', '$', 2), ('EUR', 'Euro', '€', 2), ('COP', 'Colombian Peso', '$', 0);
 
-              -- 7. Basic Identiy Catalogs (Gender and Types)
+              -- 7. Identity basics
               INSERT INTO gender (gender_code, gender_name) VALUES ('M', 'Male'), ('F', 'Female'), ('X', 'Non-Binary'), ('U', 'Unknown');
               INSERT INTO person_type (type_code, type_name) VALUES ('PAX', 'Passenger'), ('EMP', 'Employee'), ('CREW', 'Crew Member');
               INSERT INTO document_type (type_code, type_name) VALUES ('PASSPORT', 'Passport'), ('ID', 'National ID Card'), ('VISA', 'Visa');
