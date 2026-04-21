@@ -38,3 +38,6 @@ databaseChangeLog:
   - include:
       file: 13_dml_tripulacion.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 14_dml_auditoria.yaml
+      relativeToChangelogFile: true
