@@ -1,11 +1,17 @@
 databaseChangeLog:
   - changeSet:
-      id: "dominio-geografia-completo-v1"
+      id: "01-dml-geografia-y-referencia"
       author: "HU-21dev"
+      rollback:
+        - sqlFile:
+            path: "../../../05_rollbacks/02_dml/00_inserts/01_dml_geografia_y_referencia.sql"
+            relativeToChangelogFile: true
       changes:
         - sql:
             splitStatements: true
             sql: |
+              -- DOMINIO 01: GEOGRAFIA Y REFERENCIA (DML)
+              
               -- 1. Time Zones
               INSERT INTO time_zone (time_zone_id, time_zone_name, utc_offset_minutes) VALUES 
               ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'UTC-05:00', -300),
@@ -40,8 +46,16 @@ databaseChangeLog:
               INSERT INTO currency (iso_currency_code, currency_name, currency_symbol, minor_units) VALUES 
               ('USD', 'US Dollar', '$', 2), ('EUR', 'Euro', '€', 2), ('COP', 'Colombian Peso', '$', 0);
 
-              -- 7. Identity basics
-              INSERT INTO gender (gender_code, gender_name) VALUES ('M', 'Male'), ('F', 'Female'), ('X', 'Non-Binary'), ('U', 'Unknown');
-              INSERT INTO person_type (type_code, type_name) VALUES ('PAX', 'Passenger'), ('EMP', 'Employee'), ('CREW', 'Crew Member');
-              INSERT INTO document_type (type_code, type_name) VALUES ('PASSPORT', 'Passport'), ('ID', 'National ID Card'), ('VISA', 'Visa');
-              INSERT INTO contact_type (type_code, type_name) VALUES ('EMAIL', 'Email Address'), ('PHONE', 'Mobile Phone'), ('HOME', 'Home Phone');
+              -- 7. Districts
+              INSERT INTO district (district_id, city_id, district_name) VALUES 
+              ('f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f21', 'e0eebc99-9c0b-4ef8-bb6d-6bb9bd380e11', 'Chapinero'),
+              ('f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f22', 'e0eebc99-9c0b-4ef8-bb6d-6bb9bd380e12', 'Downtown'),
+              ('f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f23', 'e0eebc99-9c0b-4ef8-bb6d-6bb9bd380e13', 'Centro');
+
+              -- 8. Addresses
+              INSERT INTO address (address_id, district_id, address_line_1, postal_code) VALUES 
+              ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a31', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f21', 'Calle 60 # 10-20', '110231'),
+              ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a32', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f22', '100 Biscayne Blvd', '33132'),
+              ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f23', 'Calle Mayor 1', '28013');
+
+
