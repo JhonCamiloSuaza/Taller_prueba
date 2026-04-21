@@ -32,4 +32,7 @@ databaseChangeLog:
   - include:
       file: 11_dml_pagos.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 12_dml_facturacion.yaml
+      relativeToChangelogFile: true
 
