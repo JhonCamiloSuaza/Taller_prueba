@@ -29,4 +29,7 @@ databaseChangeLog:
   - include:
       file: 10_dml_abordaje.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 11_dml_pagos.yaml
+      relativeToChangelogFile: true
 
