@@ -14,4 +14,7 @@ databaseChangeLog:
   - include:
       file: 05_dml_clientes_lealtad.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 06_dml_aeropuerto.yaml
+      relativeToChangelogFile: true
 
