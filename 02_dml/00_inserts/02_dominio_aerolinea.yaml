@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "dominio-aerolinea-v1"
+      author: "HU-20dev"
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              -- 1. Avianca (Colombia - c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c11)
+              INSERT INTO airline (home_country_id, airline_code, airline_name, iata_code, icao_code, is_active) VALUES 
+              ('c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c11', 'AVA', 'Avianca', 'AV', 'AVA', true);
+
+              -- 2. American Airlines (USA - c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c12)
+              INSERT INTO airline (home_country_id, airline_code, airline_name, iata_code, icao_code, is_active) VALUES 
+              ('c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c12', 'AAL', 'American Airlines', 'AA', 'AAL', true);
+
+              -- 3. Iberia (Spain - c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c13)
+              INSERT INTO airline (home_country_id, airline_code, airline_name, iata_code, icao_code, is_active) VALUES 
+              ('c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c13', 'IBE', 'Iberia', 'IB', 'IBE', true);
+
+              -- 4. LATAM Colombia (Colombia - c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c11)
+              INSERT INTO airline (home_country_id, airline_code, airline_name, iata_code, icao_code, is_active) VALUES 
+              ('c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c11', 'LMC', 'LATAM Colombia', '4C', 'LNE', true);
+      rollback:
+        - sql:
+            splitStatements: true
+            sql: |
+              DELETE FROM airline WHERE airline_code IN ('AVA', 'AAL', 'IBE', 'LMC');
