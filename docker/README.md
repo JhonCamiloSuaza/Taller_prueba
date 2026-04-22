@@ -38,7 +38,7 @@ services:
       --username=postgres
       --password=camilo200804
       --driver=org.postgresql.Driver
-      --changeLogFile=01_tables/00-changelog.yaml
+      --changeLogFile=changelog-master.yaml
       update
 
 volumes:
