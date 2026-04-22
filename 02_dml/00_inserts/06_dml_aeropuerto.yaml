@@ -2,10 +2,6 @@ databaseChangeLog:
   - changeSet:
       id: "06-dml-aeropuerto"
       author: "HU-21dev"
-      rollback:
-        - sqlFile:
-            path: "../../../05_rollbacks/02_dml/00_inserts/06_dml_aeropuerto.sql"
-            relativeToChangelogFile: true
       changes:
         - sql:
             splitStatements: true
@@ -16,23 +12,9 @@ databaseChangeLog:
               INSERT INTO airport (airport_id, address_id, airport_name, iata_code, icao_code) VALUES 
               ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a61', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a31', 'El Dorado International Airport', 'BOG', 'SKBO'),
               ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a62', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a32', 'Miami International Airport', 'MIA', 'KMIA'),
-              ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a63', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33', 'Adolfo Suárez Madrid–Barajas Airport', 'MAD', 'LEMD');
-
-              -- 2. Terminals
-              INSERT INTO terminal (terminal_id, airport_id, terminal_code, terminal_name) VALUES 
-              ('t1eebc99-9c0b-4ef8-bb6d-6bb9bd380t61', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a61', 'T1', 'Terminal 1 principal'),
-              ('t1eebc99-9c0b-4ef8-bb6d-6bb9bd380t62', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a62', 'N', 'North Terminal'),
-              ('t1eebc99-9c0b-4ef8-bb6d-6bb9bd380t63', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a63', 'T4', 'Terminal 4 Barajas');
-
-              -- 3. Boarding Gates
-              INSERT INTO boarding_gate (boarding_gate_id, terminal_id, gate_code) VALUES 
-              ('g1eebc99-9c0b-4ef8-bb6d-6bb9bd380g61', 't1eebc99-9c0b-4ef8-bb6d-6bb9bd380t61', 'A1'),
-              ('g1eebc99-9c0b-4ef8-bb6d-6bb9bd380g62', 't1eebc99-9c0b-4ef8-bb6d-6bb9bd380t61', 'A2'),
-              ('g1eebc99-9c0b-4ef8-bb6d-6bb9bd380g63', 't1eebc99-9c0b-4ef8-bb6d-6bb9bd380t62', 'D10'),
-              ('g1eebc99-9c0b-4ef8-bb6d-6bb9bd380g64', 't1eebc99-9c0b-4ef8-bb6d-6bb9bd380t63', 'K10');
-
-              -- 4. Runways
-              INSERT INTO runway (runway_id, airport_id, runway_code, length_meters, surface_type) VALUES 
-              ('w1eebc99-9c0b-4ef8-bb6d-6bb9bd380w61', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a61', '13L/31R', 3800, 'Asphalt'),
-              ('w1eebc99-9c0b-4ef8-bb6d-6bb9bd380w62', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a61', '13R/31L', 3800, 'Asphalt'),
-              ('w1eebc99-9c0b-4ef8-bb6d-6bb9bd380w63', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a62', '8L/26R', 2621, 'Concrete');
+              ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a63', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33', 'Adolfo Suárez Madrid–Barajas Airport', 'MAD', 'LEMD')
+              ON CONFLICT (iata_code) DO NOTHING;
+      rollback:
+        - sqlFile:
+            path: "../../../05_rollbacks/02_dml/00_inserts/06_dml_aeropuerto.sql"
+            relativeToChangelogFile: true

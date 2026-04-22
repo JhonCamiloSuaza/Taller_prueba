@@ -1,18 +1,18 @@
 databaseChangeLog:
   - include:
-      file: 01_dml_geografia_y_referencia.yaml
+      file: 01_master_basics.yaml
       relativeToChangelogFile: true
   - include:
-      file: 02_dml_aerolinea.yaml
+      file: 02_statuses_and_configs.yaml
       relativeToChangelogFile: true
   - include:
-      file: 03_dml_identidad.yaml
+      file: 03_geography.yaml
       relativeToChangelogFile: true
   - include:
-      file: 04_dml_seguridad.yaml
+      file: 04_roles_and_permissions.yaml
       relativeToChangelogFile: true
   - include:
-      file: 05_dml_clientes_lealtad.yaml
+      file: 05_operational_data.yaml
       relativeToChangelogFile: true
   - include:
       file: 06_dml_aeropuerto.yaml
@@ -23,4 +23,21 @@ databaseChangeLog:
   - include:
       file: 08_dml_operaciones_vuelo.yaml
       relativeToChangelogFile: true
-
+  - include:
+      file: 09_dml_ventas_reservas.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 10_dml_abordaje.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 11_dml_pagos.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 12_dml_facturacion.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 13_dml_tripulacion.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 14_dml_auditoria.yaml
+      relativeToChangelogFile: true
