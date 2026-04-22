@@ -10,17 +10,13 @@ databaseChangeLog:
         - sql:
             splitStatements: true
             sql: |
-<<<<<<< HEAD
               -- Disable triggers during DML seed
               SET session_replication_role = replica;
 
-=======
->>>>>>> 46479368e23874833578169cfbd45d6814e32f76
               -- DOMINIO 10: ABORDAJE (DML)
 
               -- 1. Boarding Groups
               INSERT INTO boarding_group (boarding_group_id, group_code, group_name, sequence_no) VALUES 
-<<<<<<< HEAD
               ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a10', 'GRP1', 'Priority Group 1', 1), 
               ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd381a10', 'GRP2', 'Economy Group 2', 2);
 
@@ -46,31 +42,3 @@ databaseChangeLog:
 
               -- Re-enable triggers
               SET session_replication_role = DEFAULT;
-=======
-              ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a10', 'A', 'Priority/Business', 1),
-              ('b1eebc99-9c0b-4ef8-bb6d-6bb9bd380b10', 'B', 'Frequent Flyer', 2),
-              ('c1eebc99-9c0b-4ef8-bb6d-6bb9bd380c10', 'C', 'General Boarding 1', 3),
-              ('d1eebc99-9c0b-4ef8-bb6d-6bb9bd380d10', 'D', 'General Boarding 2', 4),
-              ('e1eebc99-9c0b-4ef8-bb6d-6bb9bd380e10', 'E', 'Rear Cabin', 5);
-
-              -- 2. Check-in Statuses
-              INSERT INTO check_in_status (check_in_status_id, status_code, status_name) VALUES 
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s10', 'PENDING', 'Pending Check-in'),
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s11', 'COMPLETED', 'Checked-in Successfully'),
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s12', 'CANCELLED', 'Check-in Cancelled');
-
-              -- 3. Validation Results
-              INSERT INTO validation_result (validation_result_id, result_code, result_name) VALUES 
-              ('v1eebc99-9c0b-4ef8-bb6d-6bb9bd380v10', 'SUCCESS', 'Validated - Allowed to board'),
-              ('v1eebc99-9c0b-4ef8-bb6d-6bb9bd380v11', 'DENIED', 'Denied - Issue detected'),
-              ('v1eebc99-9c0b-4ef8-bb6d-6bb9bd380v12', 'MANUAL', 'Manually Approved');
-
-              -- 4. SAMPLE TRANSACTION: Jhon Camilo Suaza Check-in
-              -- Check-in
-              INSERT INTO check_in (check_in_id, ticket_segment_id, check_in_status_id, boarding_group_id, checked_in_at) VALUES 
-              ('k1eebc99-9c0b-4ef8-bb6d-6bb9bd380k10', 'z1eebc99-9c0b-4ef8-bb6d-6bb9bd380z91', 's1eebc99-9c0b-4ef8-bb6d-6bb9bd380s11', 'a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a10', '2026-05-01 06:00:00+00');
-
-              -- Boarding Pass
-              INSERT INTO boarding_pass (boarding_pass_id, check_in_id, boarding_pass_code, barcode_value, issued_at) VALUES 
-              ('b1eebc99-9c0b-4ef8-bb6d-6bb9bd380b11', 'k1eebc99-9c0b-4ef8-bb6d-6bb9bd380k10', 'BP-JCS77-BOGMIA', 'BC-1234567890-AV-JCS', '2026-05-01 06:01:00+00');
->>>>>>> 46479368e23874833578169cfbd45d6814e32f76

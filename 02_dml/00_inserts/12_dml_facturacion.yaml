@@ -10,7 +10,6 @@ databaseChangeLog:
         - sql:
             splitStatements: true
             sql: |
-<<<<<<< HEAD
               -- Disable triggers during DML seed
               SET session_replication_role = replica;
 
@@ -38,32 +37,3 @@ databaseChangeLog:
 
               -- Re-enable triggers
               SET session_replication_role = DEFAULT;
-=======
-              -- DOMINIO 12: FACTURACIÓN (DML)
-
-              -- 1. Taxes
-              INSERT INTO tax (tax_id, tax_code, tax_name, rate_percentage, effective_from) VALUES 
-              ('t1eebc99-9c0b-4ef8-bb6d-6bb9bd380t12', 'IVA_COL', 'Impuesto al Valor Agregado (Colombia)', 19.000, '2020-01-01'),
-              ('t1eebc99-9c0b-4ef8-bb6d-6bb9bd380t13', 'SALES_TAX_US', 'US Sales Tax', 7.000, '2020-01-01');
-
-              -- 2. Exchange Rates (Sample USD to COP)
-              -- Assuming USD and COP IDs exist in domain 01 (currency)
-              -- For now, using placeholders if IDs are not known, but following the established pattern.
-              -- INSERT INTO exchange_rate (from_currency_id, to_currency_id, effective_date, rate_value) VALUES ...
-
-              -- 3. Invoice Statuses
-              INSERT INTO invoice_status (invoice_status_id, status_code, status_name) VALUES 
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s12', 'DRAFT', 'Draft Invoice'),
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s13', 'ISSUED', 'Issued'),
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s14', 'PAID', 'Paid'),
-              ('s1eebc99-9c0b-4ef8-bb6d-6bb9bd380s15', 'CANCELLED', 'Cancelled');
-
-              -- 4. SAMPLE TRANSACTION: Invoice for Jhon Camilo Suaza Sale
-              -- Invoice
-              INSERT INTO invoice (invoice_id, sale_id, invoice_status_id, currency_id, invoice_number, issued_at) VALUES 
-              ('i1eebc99-9c0b-4ef8-bb6d-6bb9bd380i12', 'x1eebc99-9c0b-4ef8-bb6d-6bb9bd380x91', 's1eebc99-9c0b-4ef8-bb6d-6bb9bd380s14', 'USD', 'INV-2026-0001', '2026-04-20 14:10:00+00');
-
-              -- Invoice Line
-              INSERT INTO invoice_line (invoice_line_id, invoice_id, tax_id, line_number, line_description, quantity, unit_price) VALUES 
-              ('l1eebc99-9c0b-4ef8-bb6d-6bb9bd380l12', 'i1eebc99-9c0b-4ef8-bb6d-6bb9bd380i12', 't1eebc99-9c0b-4ef8-bb6d-6bb9bd380t12', 1, 'Air Transportation Service BOG-MIA', 1, 350.00);
->>>>>>> 46479368e23874833578169cfbd45d6814e32f76
