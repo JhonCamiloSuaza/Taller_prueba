@@ -10,6 +10,7 @@ databaseChangeLog:
         - sql:
             splitStatements: true
             sql: |
+<<<<<<< HEAD
               -- DOMINIO 13: TRIPULACION (DML)
 
               -- 1. Crew Roles
@@ -26,3 +27,21 @@ databaseChangeLog:
               -- 3. Flight Crew Assignment (assignment_id, not flight_crew_assignment_id)
               INSERT INTO flight_crew_assignment (assignment_id, flight_id, crew_member_id, crew_role_id) VALUES 
               ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a13', 'f1eebc99-9c0b-4ef8-bb6d-6bb9bd380f81', '11eebc99-9c0b-4ef8-bb6d-6bb9bd380113', '01eebc99-9c0b-4ef8-bb6d-6bb9bd380013');
+=======
+              -- DOMINIO 13: TRIPULACIÓN (DML)
+
+              -- 1. Crew Roles
+              INSERT INTO crew_role (crew_role_id, role_code, role_name) VALUES 
+              ('r1eebc99-9c0b-4ef8-bb6d-6bb9bd380r13', 'CAPTAIN', 'Captain / Pilot in Command'),
+              ('r1eebc99-9c0b-4ef8-bb6d-6bb9bd380r14', 'FIRST_OFFICER', 'First Officer / Co-Pilot'),
+              ('r1eebc99-9c0b-4ef8-bb6d-6bb9bd380r15', 'PURSER', 'Cabin Purser'),
+              ('r1eebc99-9c0b-4ef8-bb6d-6bb9bd380r16', 'ATTENDANT', 'Flight Attendant');
+
+              -- 2. Crew Members (Using Jane Doe from Domain 03)
+              INSERT INTO crew_member (crew_member_id, person_id, employee_id, license_number) VALUES 
+              ('m1eebc99-9c0b-4ef8-bb6d-6bb9bd380m13', 'd1eebc99-9c0b-4ef8-bb6d-6bb9bd380d22', 'EMP-1001', 'LIC-PILOT-887766');
+
+              -- 3. Flight Crew Assignments (Assigning Jane to AV011)
+              INSERT INTO flight_crew_assignment (assignment_id, flight_id, crew_member_id, crew_role_id) VALUES 
+              ('a1eebc99-9c0b-4ef8-bb6d-6bb9bd380a13', 'f1eebc99-9c0b-4ef8-bb6d-6bb9bd380f81', 'm1eebc99-9c0b-4ef8-bb6d-6bb9bd380m13', 'r1eebc99-9c0b-4ef8-bb6d-6bb9bd380r13');
+>>>>>>> 46479368e23874833578169cfbd45d6814e32f76
